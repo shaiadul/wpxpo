@@ -5,7 +5,6 @@ export default function SpinnerWheel({ names }) {
   const canvasRef = useRef(null);
   const [selectedName, setSelectedName] = useState(null);
 
- 
   const getRandomColor = () => {
     const letters = "0123456789ABCDEF";
     let color = "#";
@@ -78,13 +77,17 @@ export default function SpinnerWheel({ names }) {
   }, [names]);
 
   return (
-    <div className="relative">
-      <canvas
-        ref={canvasRef}
-        width={400}
-        height={400}
-        style={{ transition: "transform 4s ease-out", border: "none" }}
-      />
+    <div>
+      <div className="relative">
+        <canvas
+          ref={canvasRef}
+          width={400}
+          height={400}
+          style={{ transition: "transform 4s ease-out", border: "none" }}
+        />
+
+        <div className="absolute top-[50%] right-0 transform -translate-x-1/2 translate-y-[-50%] w-2 h-14 rounded-md rotate-90 bg-red-600"></div>
+      </div>
       <button
         onClick={() => {
           spinWheel();
@@ -98,11 +101,6 @@ export default function SpinnerWheel({ names }) {
           The winner is: {selectedName}
         </div>
       )}
-
-      {/* <div className="absolute top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-red-500 rounded-full">
-        {" "}
-      </div> */}
-      <div className="absolute top-[45%] right-0 transform -translate-x-1/2 translate-y-[-50%] w-2 h-14 rounded-md rotate-90 bg-red-600"></div>
     </div>
   );
 }
