@@ -48,7 +48,7 @@ export default function PatternShow() {
         pattern += String.fromCharCode(97 + i) + " ";
       }
     } else {
-      return "Invalid pattern type. Use 'Number' or 'Alphabet'.";
+      return "Invalid pattern type. Use '1' or 'a'.";
     }
 
     return pattern;
