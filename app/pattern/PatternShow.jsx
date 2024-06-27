@@ -2,39 +2,57 @@
 import { useState } from "react";
 
 export default function PatternShow() {
-  const [N, setN] = useState(5); 
-  const [T, setT] = useState(""); 
-  const [pattern, setPattern] = useState(""); 
-
+  const [N, setN] = useState(5);
+  const [T, setT] = useState("");
+  const [pattern, setPattern] = useState("");
 
   const generatePattern = (N, T) => {
     let pattern = "";
-
 
     if (N < 1 || N > 26) {
       return "Invalid size N. N should be between 1 and 26.";
     }
 
-    if (T === "") {
-      return "Invalid pattern type";
-    } else if (T === "1") {
-      for (let i = 0; i < N; i++) {
-        for (let j = 1; j <= N; j++) {
-          pattern += j;
+    if (T === "1") {
+      for (let i = 1; i <= N; i++) {
+        pattern += i + " ";
+      }
+      pattern += "\n";
+
+      for (let i = 2; i < N; i++) {
+        pattern += i;
+        for (let s = 0; s < 2 * N - 3; s++) {
+          pattern += " ";
         }
-        pattern += "\n";
+        pattern += N - i + 1 + "\n";
+      }
+
+      for (let k = N; k > 0; k--) {
+        pattern += k + " ";
       }
     } else if (T === "a") {
       for (let i = 0; i < N; i++) {
-        for (let j = 0; j < N; j++) {
-          pattern += String.fromCharCode(97 + j);
-        }
-        pattern += "\n";
+        pattern += String.fromCharCode(97 + i) + " ";
       }
+      pattern += "\n";
+
+      for (let i = 1; i < N - 1; i++) {
+        pattern += String.fromCharCode(97 + i) + " ";
+        for (let s = 0; s < N - 2; s++) {
+          pattern += "  ";
+        }
+        pattern += String.fromCharCode(97 + N - i - 1) + "\n";
+      }
+
+      for (let i = N - 1; i >= 0; i--) {
+        pattern += String.fromCharCode(97 + i) + " ";
+      }
+    } else {
+      return "Invalid pattern type. Use 'Number' or 'Alphabet'.";
     }
+
     return pattern;
   };
-
 
   const handleGeneratePattern = () => {
     const generatedPattern = generatePattern(N, T);
@@ -80,21 +98,3 @@ export default function PatternShow() {
     </section>
   );
 }
-
-
-// a b c d e 
-// b       d
-// c       c
-// d       b
-// e d c b a
-
-
-// 1 2 3 4 5
-// 2       4
-// 3       3
-// 4       2
-// 5 4 3 2 1
-
-
-// i want, this type of pattern
-

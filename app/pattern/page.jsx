@@ -4,42 +4,58 @@ export default function Page() {
   const generatePattern = (N, T) => {
     let pattern = "";
 
-    switch (T) {
-      case "T1":
-        // Square pattern
-        for (let i = 0; i < N; i++) {
-          for (let j = 0; j < N; j++) {
-            pattern += "* ";
-          }
-          pattern += "\n";
+    if (N < 1 || N > 26) {
+      return "Invalid size N. N should be between 1 and 26.";
+    }
+
+    if (T === "1") {
+      for (let i = 1; i <= N; i++) {
+        pattern += i + " ";
+      }
+      pattern += "\n";
+
+      for (let i = 2; i < N; i++) {
+        pattern += i;
+        for (let s = 0; s < 2 * N - 3; s++) {
+          pattern += " ";
         }
-        break;
+        pattern += N - i + 1 + "\n";
+      }
 
-      case "T2":
-        // Right-angle triangle pattern
-        for (let i = 1; i <= N; i++) {
-          for (let j = 0; j < i; j++) {
-            pattern += "* ";
-          }
-          pattern += "\n";
+      for (let k = N; k > 0; k--) {
+        pattern += k + " ";
+      }
+    } else if (T === "a") {
+      for (let i = 0; i < N; i++) {
+        pattern += String.fromCharCode(97 + i) + " ";
+      }
+      pattern += "\n";
+
+      for (let i = 1; i < N - 1; i++) {
+        pattern += String.fromCharCode(97 + i) + " ";
+        for (let s = 0; s < N - 2; s++) {
+          pattern += "  ";
         }
-        break;
+        pattern += String.fromCharCode(97 + N - i - 1) + "\n";
+      }
 
-      // Add more cases for different patterns here
-
-      default:
-        pattern = "Invalid pattern type";
+      for (let i = N - 1; i >= 0; i--) {
+        pattern += String.fromCharCode(97 + i) + " ";
+      }
+    } else {
+      return "Invalid pattern type. Use 'Number' or 'Alphabet'.";
     }
 
     return pattern;
   };
 
-  // Example usage:
-  const N = 5; // Size of the pattern
-  const T = "T2"; // Type of the pattern (e.g., 'T1' for Square, 'T2' for Triangle)
+  const N = 5;
+  const T = "a";
   console.log(generatePattern(N, T));
 
-  return <section>
-    <PatternShow />
-  </section>;
+  return (
+    <section>
+      <PatternShow />
+    </section>
+  );
 }
