@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Test Live Site: https://wpxpo-three.vercel.app
 
-## Getting Started
 
-First, run the development server:
+Pattern Code (Javascript):: 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+const generatePattern = (N, T) => {
+    let pattern = "";
+    if (N < 1 || N > 26) {
+      return "Invalid size N. N should be between 1 and 26.";
+    }
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    if (T === "1") {
+      for (let i = 1; i <= N; i++) {
+        pattern += i + " ";
+      }
+      pattern += "\n";
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+      for (let i = 2; i < N; i++) {
+        pattern += i;
+        for (let s = 0; s < 2 * N - 3; s++) {
+          pattern += " ";
+        }
+        pattern += N - i + 1 + "\n";
+      }
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+      for (let k = N; k > 0; k--) {
+        pattern += k + " ";
+      }
+    } else if (T === "a") {
+      for (let i = 0; i < N; i++) {
+        pattern += String.fromCharCode(97 + i) + " ";
+      }
+      pattern += "\n";
 
-## Learn More
+      for (let i = 1; i < N - 1; i++) {
+        pattern += String.fromCharCode(97 + i) + " ";
+        for (let s = 0; s < N - 2; s++) {
+          pattern += "  ";
+        }
+        pattern += String.fromCharCode(97 + N - i - 1) + "\n";
+      }
 
-To learn more about Next.js, take a look at the following resources:
+      for (let i = N - 1; i >= 0; i--) {
+        pattern += String.fromCharCode(97 + i) + " ";
+      }
+    } else {
+      return "Invalid pattern type. Use 'Number' or 'Alphabet'.";
+    }
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    return pattern;
+  };
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  const N = 5;
+  const T = "a";
+  console.log(generatePattern(N, T));
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+ 
