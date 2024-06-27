@@ -1,4 +1,7 @@
-Test Live Site: https://wpxpo-three.vercel.app
+### Live Site
+
+Spinner Wheel: https://wpxpo-three.vercel.app
+Pattern: https://wpxpo-three.vercel.app/pattern
 
 
 Pattern Code (Javascript):: 
