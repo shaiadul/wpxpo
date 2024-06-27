@@ -3,9 +3,9 @@ Test Live Site: https://wpxpo-three.vercel.app
 
 Pattern Code (Javascript):: 
 
-  const generatePattern = (N, T) => {
+```
+const generatePattern = (N, T) => {
     let pattern = "";
-
     if (N < 1 || N > 26) {
       return "Invalid size N. N should be between 1 and 26.";
     }
@@ -54,3 +54,6 @@ Pattern Code (Javascript)::
   const N = 5;
   const T = "a";
   console.log(generatePattern(N, T));
+
+```
+ 
