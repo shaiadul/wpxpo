@@ -86,7 +86,7 @@ export default function SpinnerWheel({ names }) {
           style={{ transition: "transform 4s ease-out", border: "none" }}
         />
 
-        <div className="absolute top-[50%] right-0 transform -translate-x-1/2 translate-y-[-50%] w-2 h-14 rounded-md rotate-90 bg-red-600"></div>
+        <div className="absolute top-[50%] -right-14 transform -translate-x-1/2 translate-y-[-50%] w-16 h-5 rounded-md  bg_clip_path"></div>
       </div>
       <button
         onClick={() => {
@@ -104,3 +104,4 @@ export default function SpinnerWheel({ names }) {
     </div>
   );
 }
+// w-2 h-14 rotate-90

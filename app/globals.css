@@ -11,3 +11,13 @@ Home Page Wheel design
     border: 1px solid #804949;
     margin-top: 5rem;
   }
+/* --------------------------------------------- 
+bg  design
+----------------------------------------------*/
+
+ .bg_clip_path {
+    background: linear-gradient(90deg, #f6d365 0%, #fda085 100%);
+    clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+
+  
+  }
