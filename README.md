@@ -4,10 +4,10 @@ Spinner Wheel: https://wpxpo-three.vercel.app </br>
 Pattern: https://wpxpo-three.vercel.app/pattern
 
 
-Pattern Code (Javascript):: 
+Pattern Code (Javascript)
 
 ```
-const generatePattern = (N, T) => {
+const generate pattern = (N, T) => {
     let pattern = "";
     if (N < 1 || N > 26) {
       return "Invalid size N. N should be between 1 and 26.";
